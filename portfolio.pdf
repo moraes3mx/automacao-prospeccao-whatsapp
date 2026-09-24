@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Victor Muniz | Engenheiro de Software & Desenvolvedor Web</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064e3b',
+                            accent: '#10B981',
+                            darkbg: '#0B0F17',
+                            cardbg: '#131B2E',
+                            border: '#1F293D'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B0F17;
+            color: #E2E8F0;
+        }
+        .glow-effect {
+            box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.25);
+        }
+        .glow-text {
+            text-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        }
+        .custom-gradient-text {
+            background: linear-gradient(135deg, #10B981 0%, #6EE7B7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-border-glow:hover {
+            border-color: #10B981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-emerald-500 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#0B0F17]/80 border-b border-gray-800/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#inicio" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-105 transition-transform">
+                        JV
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-lg font-bold text-white tracking-tight group-hover:text-emerald-400 transition-colors">João Victor Muniz</span>
+                        <span class="text-xs text-gray-400">Engenharia de Software</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Navigation -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#inicio" class="text-gray-300 hover:text-emerald-400 transition-colors">Início</a>
+                    <a href="#projetos" class="text-gray-300 hover:text-emerald-400 transition-colors">Projetos</a>
+                    <a href="#servicos" class="text-gray-300 hover:text-emerald-400 transition-colors">Para Empreendedores</a>
+                    <a href="#orcamento" class="text-gray-300 hover:text-emerald-400 transition-colors">Simular Projeto</a>
+                    <a href="#sobre" class="text-gray-300 hover:text-emerald-400 transition-colors">Currículo & Sobre</a>
+                </nav>
+
+                <!-- Header Direct CTA Button -->
+                <div class="hidden sm:flex items-center space-x-4">
+                    <a href="https://wa.me/5571993794205?text=Ol%C3%A1%20Jo%C3%A3o%20Victor%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto!" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-gray-950 font-semibold text-sm transition-all duration-300 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 flex items-center space-x-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Falar no WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" aria-label="Abrir menu" class="md:hidden text-gray-400 hover:text-white focus:outline-none p-2">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#131B2E] border-b border-gray-800 px-4 pt-3 pb-6 space-y-3">
+            <a href="#inicio" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-gray-200 hover:bg-gray-800">Início</a>
+            <a href="#projetos" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-gray-200 hover:bg-gray-800">Projetos</a>
+            <a href="#servicos" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-gray-200 hover:bg-gray-800">Para Empreendedores</a>
+            <a href="#orcamento" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-gray-200 hover:bg-gray-800">Simular Projeto</a>
+            <a href="#sobre" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-gray-200 hover:bg-gray-800">Currículo & Sobre</a>
+            <a href="https://wa.me/5571993794205?text=Ol%C3%A1%20Jo%C3%A3o%20Victor%2C%20vi%20seu%20portf%C3%B3lio!" 
+               target="_blank" 
+               class="block w-full text-center py-3 rounded-xl bg-emerald-500 text-gray-950 font-bold text-sm shadow-md mt-2">
+                <i class="fa-brands fa-whatsapp mr-2 text-lg"></i> Iniciar Conversa
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="inicio" class="relative py-16 sm:py-24 overflow-hidden">
+            <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        
+                        <!-- Status Badge -->
+                        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-medium">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span>Disponível para Projetos Freelance & Estágio em Tech</span>
+                        </div>
+
+                        <!-- Main Heading -->
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                            Criando <span class="custom-gradient-text">Sites & Landing Pages</span> que Transformam Visitantes em Clientes.
+                        </h1>
+
+                        <!-- Subtitle -->
+                        <p class="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                            Estudante do <strong class="text-gray-200">4º semestre de Engenharia de Software</strong> (UCSal). Unindo visão técnica, comunicação clara e design orientado a vendas para impulsionar negócios locais e empreendedores.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="https://wa.me/5571993794205?text=Ol%C3%A1%20Jo%C3%A3o%20Victor%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20meu%20site!" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-gray-950 font-bold text-base transition-all duration-300 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 flex items-center justify-center space-x-3 group">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                                <span>Solicitar Orçamento no WhatsApp</span>
+                                <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+
+                            <a href="#projetos" 
+                               class="w-full sm:w-auto px-6 py-4 rounded-xl bg-gray-800/80 hover:bg-gray-800 text-gray-200 border border-gray-700 font-semibold text-base transition-all flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-eye text-gray-400"></i>
+                                <span>Ver Casos de Sucesso</span>
+                            </a>
+                        </div>
+
+                        <!-- Highlights Quick List -->
+                        <div class="pt-6 border-t border-gray-800/80 grid grid-cols-3 gap-4 text-center lg:text-left">
+                            <div>
+                                <p class="text-2xl font-bold text-white">100%</p>
+                                <p class="text-xs text-gray-400">Foco em Conversão</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-emerald-400">Mobile First</p>
+                                <p class="text-xs text-gray-400">Layouts Adaptáveis</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-white">Rápido</p>
+                                <p class="text-xs text-gray-400">Carregamento Leve</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Hero Card Display -->
+                    <div class="lg:col-span-5">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            <div class="bg-[#131B2E] border border-gray-800 rounded-2xl p-6 shadow-2xl relative z-10 glow-effect">
+                                
+                                <div class="flex items-center space-x-4 mb-6 pb-4 border-b border-gray-800">
+                                    <div class="relative">
+                                        <div class="w-16 h-16 rounded-full bg-emerald-500/20 border-2 border-emerald-500 flex items-center justify-center text-emerald-400 font-bold text-2xl">
+                                            JV
+                                        </div>
+                                        <span class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#131B2E]"></span>
+                                    </div>
+                                    <div>
+                                        <h2 class="text-lg font-bold text-white">João Victor Muniz</h2>
+                                        <p class="text-xs text-emerald-400 font-medium">Dev Front-End & Eng. de Software</p>
+                                        <p class="text-xs text-gray-400 mt-0.5"><i class="fa-solid fa-location-dot text-red-400 mr-1"></i> Lauro de Freitas / Salvador, BA</p>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-4 text-sm">
+                                    <div class="bg-gray-900/60 rounded-xl p-3.5 border border-gray-800">
+                                        <span class="text-xs text-gray-400 block mb-1">Formação Acadêmica</span>
+                                        <div class="flex items-center justify-between text-white font-medium">
+                                            <span>Engenharia de Software (UCSal)</span>
+                                            <span class="text-xs text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">4º Semestre</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-gray-900/60 rounded-xl p-3.5 border border-gray-800">
+                                        <span class="text-xs text-gray-400 block mb-1">Diferencial</span>
+                                        <p class="text-gray-300 text-xs leading-relaxed">
+                                            Comunicação clara, proatividade e acompanhamento passo a passo do cliente desde o protótipo até a publicação do site.
+                                        </p>
+                                    </div>
+
+                                    <div class="pt-2">
+                                        <p class="text-xs text-gray-400 mb-2 font-medium">Principais Tecnologias:</p>
+                                        <div class="flex flex-wrap gap-1.5">
+                                            <span class="text-xs px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 border border-gray-700">HTML5</span>
+                                            <span class="text-xs px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 border border-gray-700">CSS3</span>
+                                            <span class="text-xs px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 border border-gray-700">JavaScript</span>
+                                            <span class="text-xs px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">Tailwind</span>
+                                            <span class="text-xs px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 border border-gray-700">SQL</span>
+                                            <span class="text-xs px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 border border-gray-700">Python</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a href="https://wa.me/5571993794205?text=Ol%C3%A1%20Jo%C3%A3o%20Victor%2C%20vi%20seu%20perfil%20e%20gostaria%20de%20falar%20com%20voc%C3%AA!" 
+                                   target="_blank"
+                                   class="mt-6 w-full py-3 rounded-xl bg-gray-800 hover:bg-emerald-500 hover:text-gray-950 text-emerald-400 font-semibold text-sm transition-all text-center block border border-gray-700 hover:border-emerald-500">
+                                    <i class="fa-regular fa-paper-plane mr-2"></i>Enviar Mensagem Direta
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Showcase Section -->
+        <section id="projetos" class="py-20 bg-[#0E1420] border-y border-gray-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-semibold tracking-wider text-emerald-400 uppercase">Portfólio & Trabalhos Recentes</h2>
+                    <p class="mt-2 text-3xl sm:text-4xl font-extrabold text-white">Projetos Desenvolvidos com Excelência</p>
+                    <p class="mt-4 text-gray-400 text-sm sm:text-base">
+                        Confira alguns dos sites e landing pages produzidos com foco em design limpo, velocidade de carregamento e máxima conversão para o negócio.
+                    </p>
+                </div>
+
+                <!-- Featured Case Study Card: Manauara Estética -->
+                <div class="bg-[#131B2E] rounded-3xl border border-gray-800 overflow-hidden shadow-2xl hover:border-emerald-500/50 transition-all duration-300">
+                    <div class="grid lg:grid-cols-12 gap-0">
+                        
+                        <!-- Left Side: Interactive Preview / Visual Card -->
+                        <div class="lg:col-span-7 bg-gradient-to-br from-emerald-950/40 via-gray-900 to-gray-950 p-6 sm:p-10 flex flex-col justify-between relative overflow-hidden group">
+                            
+                            <!-- Browser Chrome Header Mockup -->
+                            <div class="w-full bg-gray-900 border border-gray-800 rounded-t-xl p-3 flex items-center space-x-2 shadow-md">
+                                <div class="flex space-x-1.5">
+                                    <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                                    <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                                </div>
+                                <div class="flex-grow bg-gray-950 rounded-md px-3 py-1 text-xs text-gray-400 text-center font-mono truncate">
+                                    https://manauaraestetica.vercel.app/
+                                </div>
+                                <a href="https://manauaraestetica.vercel.app/" target="_blank" class="text-xs text-emerald-400 hover:text-emerald-300">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+
+                            <!-- Mockup Banner Content -->
+                            <div class="my-8 rounded-b-xl border border-t-0 border-gray-800 bg-gray-950/80 p-6 text-center space-y-4">
+                                <div class="w-16 h-16 mx-auto rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl">
+                                    <i class="fa-solid fa-spa"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-emerald-400 font-semibold uppercase tracking-widest">Projeto em Destaque</span>
+                                    <h3 class="text-2xl font-bold text-white mt-1">Manauara Estética Avançada</h3>
+                                    <p class="text-xs text-gray-400 mt-2 max-w-md mx-auto">
+                                        Landing page de alta conversão criada para clínica de estética, destacando procedimentos, depoimentos, localização e agendamento direto via WhatsApp.
+                                    </p>
+                                </div>
+
+                                <div class="pt-2 flex justify-center gap-2">
+                                    <a href="https://manauaraestetica.vercel.app/" target="_blank" rel="noopener noreferrer" 
+                                       class="px-5 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-gray-950 text-xs font-bold transition-all flex items-center space-x-2">
+                                        <span>Acessar Site Ao Vivo</span>
+                                        <i class="fa-solid fa-external-link text-xs"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Metric Pills -->
+                            <div class="grid grid-cols-3 gap-3 text-center">
+                                <div class="bg-gray-900/80 border border-gray-800 p-2.5 rounded-xl">
+                                    <p class="text-emerald-400 font-bold text-sm">100% Mobile</p>
+                                    <p class="text-[10px] text-gray-400">Totalmente Adaptável</p>
+                                </div>
+                                <div class="bg-gray-900/80 border border-gray-800 p-2.5 rounded-xl">
+                                    <p class="text-emerald-400 font-bold text-sm">WhatsApp</p>
+                                    <p class="text-[10px] text-gray-400">Agendamento Direto</p>
+                                </div>
+                                <div class="bg-gray-900/80 border border-gray-800 p-2.5 rounded-xl">
+                                    <p class="text-emerald-400 font-bold text-sm">Vercel</p>
+                                    <p class="text-[10px] text-gray-400">Hospedagem Rápida</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Right Side: Details & Tech Stack -->
+                        <div class="lg:col-span-5 p-6 sm:p-10 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-gray-800">
+                            <div>
+                                <div class="inline-block px-3 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-semibold mb-4">
+                                    Estudo de Caso #01
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">Landing Page Comercial</h3>
+                                <p class="mt-3 text-gray-300 text-sm leading-relaxed">
+                                    Desenvolvida do zero para maximizar a captação de clientes. Com estrutura persuasiva, botões estrategicamente posicionados e design visual elegante adaptado ao nicho de beleza e estética.
+                                </p>
+
+                                <div class="mt-6 space-y-3">
+                                    <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Recursos Implementados:</h4>
+                                    <ul class="space-y-2 text-xs text-gray-300">
+                                        <li class="flex items-center space-x-2">
+                                            <i class="fa-solid fa-check text-emerald-400"></i>
+                                            <span>Design visual premium focado no público-alvo do negócio.</span>
+                                        </li>
+                                        <li class="flex items-center space-x-2">
+                                            <i class="fa-solid fa-check text-emerald-400"></i>
+                                            <span>Chamadas para ação (CTAs) integradas direto ao WhatsApp da empresa.</span>
+                                        </li>
+                                        <li class="flex items-center space-x-2">
+                                            <i class="fa-solid fa-check text-emerald-400"></i>
+                                            <span>Carregamento ultrarrápido com otimização de imagens e assets.</span>
+                                        </li>
+                                        <li class="flex items-center space-x-2">
+                                            <i class="fa-solid fa-check text-emerald-400"></i>
+                                            <span>Seção de localização, horários e serviços bem organizados.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="mt-6">
+                                    <h4 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Tecnologias Utilizadas:</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-mono border border-gray-700">HTML5</span>
+                                        <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-mono border border-gray-700">CSS3</span>
+                                        <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-xs font-mono border border-gray-700">JavaScript</span>
+                                        <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-mono border border-emerald-500/30">Vercel Deploy</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 pt-6 border-t border-gray-800 flex items-center justify-between">
+                                <a href="https://manauaraestetica.vercel.app/" target="_blank" class="text-sm font-semibold text-emerald-400 hover:text-emerald-300 flex items-center space-x-2">
+                                    <span>Visitar Manauara Estética</span>
+                                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+
+                                <a href="https://wa.me/5571993794205?text=Ol%C3%A1%20Jo%C3%A3o%20Victor%2C%20gostei%20do%20site%20da%20Manauara%20Est%C3%A9tica%20e%20quero%20um%20parecido%20para%20o%20meu%20neg%C3%B3cio!" 
+                                   target="_blank" 
+                                   class="px-4 py-2 rounded-xl bg-gray-800 hover:bg-emerald-500 hover:text-gray-950 text-xs font-bold text-white transition-all">
+                                    Quero um igual
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Upcoming Project Categories Placeholders -->
+                <div class="mt-12 grid md:grid-cols-3 gap-6">
+                    <div class="bg-[#131B2E] border border-gray-800 rounded-2xl p-6 hover:border-emerald-500/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xl mb-4">
+                            <i class="fa-solid fa-store"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Sites Institucionais</h4>
+                        <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+                            Apresentação profissional completa da sua empresa, serviços, história e contato com layout moderno.
+                        </p>
+                        <a href="https://wa.me/5571993794205?text=Ol%C3%A1%20Jo%C3%A3o%20Victor%2C%20tenho%20interesse%20em%20um%20Site%20Institucional!" target="_blank" class="inline-flex items-center text-xs font-semibold text-emerald-400 hover:underline mt-4">
+                            Solicitar orçamento <i class="fa-solid fa-chevron-right text-[10px] ml-1"></i>
+                        </a>
+                    </div>
+
+                    <div class="bg-[#131B2E] border border-gray-800 rounded-2xl p-6 hover:border-emerald-500/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xl mb-4">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Landing Pages para Anúncios</h4>
+                        <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+                            Páginas direcionadas especificamente para campanhas de Tráfego Pago (Google Ads & Meta Ads) com foco em captação de leads.
+                        </p>
+                        <a href="https://wa.me/5571993794205?text=Ol%C3%A1%20Jo%C3%A3o%20Victor%2C%20preciso%20de%20uma%20Landing%20Page%20para%20minhas%20campanhas!" target="_blank" class="inline-flex items-center text-xs font-semibold text-emerald-400 hover:underline mt-4">
+                            Solicitar orçamento <i class="fa-solid fa-chevron-right text-[10px] ml-1"></i>
+                        </a>
+                    </div>
+
+                    <div class="bg-[#131B2E] border border-gray-800 rounded-2xl p-6 hover:border-emerald-500/40 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xl mb-4">
+                            <i class="fa-solid fa-rotate"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Reformulação de Sites Antigos</h4>
+                        <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+                            Transforme um site lento ou desatualizado em uma plataforma moderna, rápida e totalmente ajustada para celulares.
+                        </p>
+                        <a href="https://wa.me/5571993794205?text=Ol%C3%A1%20Jo%C3%A3o%20Victor%2C%20quero%20reformular%20meu%20site%20atual!" target="_blank" class="inline-flex items-center text-xs font-semibold text-emerald-400 hover:underline mt-4">
+                            Solicitar orçamento <i class="fa-solid fa-chevron-right text-[10px] ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Services / Value Proposition for Entrepreneurs -->
+        <section id="servicos" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-semibold tracking-wider text-emerald-400 uppercase">Soluções para Empreendedores</h2>
+                    <p class="mt-2 text-3xl sm:text-4xl font-extrabold text-white">Como posso ajudar a alavancar seu negócio?</p>
+                    <p class="mt-4 text-gray-400 text-sm sm:text-base">
+                        Um site profissional transmite confiança imediata e facilita a decisão de compra do seu cliente.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Service Card 1 -->
+                    <div class="bg-[#131B2E] border border-gray-800 rounded-2xl p-6 hover:border-emerald-500 transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl group-hover:bg-emerald-500 group-hover:text-gray-950 transition-colors">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mt-5">100% Responsivo</h3>
+                        <p class="text-gray-400 text-xs mt-2 leading-relaxed">
+                            Mais de 80% do tráfego vem do celular. Seus clientes terão uma experiência perfeita no smartphone, tablet ou computador.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 2 -->
+                    <div class="bg-[#131B2E] border border-gray-800 rounded-2xl p-6 hover:border-emerald-500 transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl group-hover:bg-emerald-500 group-hover:text-gray-950 transition-colors">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mt-5">Integração WhatsApp</h3>
+                        <p class="text-gray-400 text-xs mt-2 leading-relaxed">
+                            Botões estratégicos de clique rápido para o cliente conversar diretamente com você ou com sua equipe de vendas.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div class="bg-[#131B2E] border border-gray-800 rounded-2xl p-6 hover:border-emerald-500 transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl group-hover:bg-emerald-500 group-hover:text-gray-950 transition-colors">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mt-5">Alta Velocidade</h3>
+                        <p class="text-gray-400 text-xs mt-2 leading-relaxed">
+                            Código limpo e otimizado para que a página carregue em segundos, evitando que você perca clientes por demora na tela.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 4 -->
+                    <div class="bg-[#131B2E] border border-gray-800 rounded-2xl p-6 hover:border-emerald-500 transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl group-hover:bg-emerald-500 group-hover:text-gray-950 transition-colors">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mt-5">Atendimento Direto</h3>
+                        <p class="text-gray-400 text-xs mt-2 leading-relaxed">
+                            Comunicação fácil, sem jargões complicados. Explico todo o processo de forma simples e transparente.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Interactive WhatsApp Project Estimator Section -->
+        <section id="orcamento" class="py-20 bg-[#0E1420] border-y border-gray-800/80">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="bg-gradient-to-b from-[#131B2E] to-[#0D1322] border border-emerald-500/30 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div class="text-center max-w-2xl mx-auto mb-10">
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold">
+                            <i class="fa-solid fa-calculator mr-1"></i> Monte seu Projeto
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">Simulador Rápido de Orçamento</h2>
+                        <p class="text-xs sm:text-sm text-gray-400 mt-2">
+                            Selecione o que você precisa abaixo. O simulador criará uma mensagem personalizada diretamente para o meu WhatsApp!
+                        </p>
+                    </div>
+
+                    <form id="quoteForm" onsubmit="handleQuoteSubmit(event)" class="space-y-6">
+                        
+                        <!-- Step 1: Type of Project -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">1. Qual o tipo de projeto?</label>
+                            <div class="grid sm:grid-cols-3 gap-3">
+                                <label class="cursor-pointer border border-gray-800 rounded-xl p-4 bg-gray-900/60 hover:border-emerald-500/60 flex flex-col justify-between transition-all has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-500/10">
+                                    <input type="radio" name="projectType" value="Landing Page de Alta Conversão" checked class="sr-only">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <i class="fa-solid fa-rocket text-emerald-400 text-lg"></i>
+                                        <span class="w-4 h-4 rounded-full border border-emerald-500 flex items-center justify-center"><span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span></span>
+                                    </div>
+                                    <span class="text-sm font-bold text-white">Landing Page</span>
+                                    <span class="text-[11px] text-gray-400 mt-1">Página única focada em vendas ou agendamentos.</span>
+                                </label>
+
+                                <label class="cursor-pointer border border-gray-800 rounded-xl p-4 bg-gray-900/60 hover:border-emerald-500/60 flex flex-col justify-between transition-all has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-500/10">
+                                    <input type="radio" name="projectType" value="Site Institucional Completo" class="sr-only">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <i class="fa-solid fa-globe text-emerald-400 text-lg"></i>
+                                        <span class="w-4 h-4 rounded-full border border-emerald-500 flex items-center justify-center"><span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span></span>
+                                    </div>
+                                    <span class="text-sm font-bold text-white">Site Institucional</span>
+                                    <span class="text-[11px] text-gray-400 mt-1">Múltiplas seções para apresentar sua empresa.</span>
+                                </label>
+
+                                <label class="cursor-pointer border border-gray-800 rounded-xl p-4 bg-gray-900/60 hover:border-emerald-500/60 flex flex-col justify-between transition-all has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-500/10">
+                                    <input type="radio" name="projectType" value="Reformulação de Site Existente" class="sr-only">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <i class="fa-solid fa-wand-magic-sparkles text-emerald-400 text-lg"></i>
+                                        <span class="w-4 h-4 rounded-full border border-emerald-500 flex items-center justify-center"><span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span></span>
+                                    </div>
+                                    <span class="text-sm font-bold text-white">Redesign / Reformulação</span>
+                                    <span class="text-[11px] text-gray-400 mt-1">Modernização de site já existente.</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Desired Features Checkbox -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">2. Recursos desejados (Opcional):</label>
+                            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+                                <label class="flex items-center space-x-3 p-3 bg-gray-900/50 rounded-xl border border-gray-800 cursor-pointer hover:border-gray-700">
+                                    <input type="checkbox" name="features" value="Botão Direto WhatsApp" checked class="rounded bg-gray-800 border-gray-700 text-emerald-500 focus:ring-emerald-500">
+                                    <span class="text-xs text-gray-300">Botão Direto para WhatsApp</span>
+                                </label>
+
+                                <label class="flex items-center space-x-3 p-3 bg-gray-900/50 rounded-xl border border-gray-800 cursor-pointer hover:border-gray-700">
+                                    <input type="checkbox" name="features" value="Formulário de Contato" class="rounded bg-gray-800 border-gray-700 text-emerald-500 focus:ring-emerald-500">
+                                    <span class="text-xs text-gray-300">Formulário de Contato</span>
+                                </label>
+
+                                <label class="flex items-center space-x-3 p-3 bg-gray-900/50 rounded-xl border border-gray-800 cursor-pointer hover:border-gray-700">
+                                    <input type="checkbox" name="features" value="Otimização para Google (SEO)" class="rounded bg-gray-800 border-gray-700 text-emerald-500 focus:ring-emerald-500">
+                                    <span class="text-xs text-gray-300">Otimização SEO Básica</span>
+                                </label>
+
+                                <label class="flex items-center space-x-3 p-3 bg-gray-900/50 rounded-xl border border-gray-800 cursor-pointer hover:border-gray-700">
+                                    <input type="checkbox" name="features" value="Galeria de Fotos/Serviços" class="rounded bg-gray-800 border-gray-700 text-emerald-500 focus:ring-emerald-500">
+                                    <span class="text-xs text-gray-300">Galeria de Fotos / Serviços</span>
+                                </label>
+
+                                <label class="flex items-center space-x-3 p-3 bg-gray-900/50 rounded-xl border border-gray-800 cursor-pointer hover:border-gray-700">
+                                    <input type="checkbox" name="features" value="Depoimentos de Clientes" class="rounded bg-gray-800 border-gray-700 text-emerald-500 focus:ring-emerald-500">
+                                    <span class="text-xs text-gray-300">Seção de Depoimentos</span>
+                                </label>
+
+                                <label class="flex items-center space-x-3 p-3 bg-gray-900/50 rounded-xl border border-gray-800 cursor-pointer hover:border-gray-700">
+                                    <input type="checkbox" name="features" value="Mapa / Localização" class="rounded bg-gray-800 border-gray-700 text-emerald-500 focus:ring-emerald-500">
+                                    <span class="text-xs text-gray-300">Mapa / Localização</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: User Details -->
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="clientName" class="block text-xs font-semibold text-gray-300 mb-1">Seu Nome / Nome da Empresa:</label>
+                                <input type="text" id="clientName" required placeholder="Ex: Maria - Clínica Bem Estar" 
+                                       class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors">
+                            </div>
+                            <div>
+                                <label for="clientSegment" class="block text-xs font-semibold text-gray-300 mb-1">Ramo de Atuação:</label>
+                                <input type="text" id="clientSegment" placeholder="Ex: Estética, Advocacia, Consultoria..." 
+                                       class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors">
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-2 text-center">
+                            <button type="submit" 
+                                    class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-gray-950 font-bold text-base transition-all duration-300 shadow-xl shadow-emerald-500/20 inline-flex items-center justify-center space-x-3">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                                <span>Enviar Simulação no WhatsApp</span>
+                            </button>
+                            <p class="text-[11px] text-gray-400 mt-2">Você será redirecionado para o WhatsApp com os dados preenchidos automaticamente.</p>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About & Academic Resume Section (Targeting Tech Recruiters & Employers) -->
+        <section id="sobre" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid lg:grid-cols-12 gap-12 items-start">
+                    
+                    <!-- Left: Profile Summary -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="inline-block px-3 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-semibold">
+                            Perfil & Formação
+                        </div>
+                        <h2 class="text-3xl font-extrabold text-white">Sobre Mim & Trajetória Acadêmica</h2>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Sou estudante do <strong>4º semestre de Engenharia de Software na Universidade Católica do Salvador (UCSal)</strong>. Possuo perfil proativo, altamente organizado e com forte capacidade de comunicação e didática.
+                        </p>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Alio meus conhecimentos de lógica de programação, arquitetura de computadores e desenvolvimento web para resolver problemas reais de empreendedores e contribuir estrategicamente em equipes de tecnologia.
+                        </p>
+
+                        <!-- Quick Info Info Card -->
+                        <div class="bg-[#131B2E] border border-gray-800 rounded-2xl p-5 space-y-3 text-xs">
+                            <div class="flex items-center justify-between pb-2 border-b border-gray-800">
+                                <span class="text-gray-400"><i class="fa-solid fa-graduation-cap text-emerald-400 mr-2"></i>Curso:</span>
+                                <span class="text-white font-medium">Engenharia de Software</span>
+                            </div>
+                            <div class="flex items-center justify-between pb-2 border-b border-gray-800">
+                                <span class="text-gray-400"><i class="fa-solid fa-university text-emerald-400 mr-2"></i>Instituição:</span>
+                                <span class="text-white font-medium">UCSal (Fev/2025 - Nov/2028)</span>
+                            </div>
+                            <div class="flex items-center justify-between pb-2 border-b border-gray-800">
+                                <span class="text-gray-400"><i class="fa-solid fa-language text-emerald-400 mr-2"></i>Idiomas:</span>
+                                <span class="text-white font-medium">Inglês Intermediário</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400"><i class="fa-solid fa-envelope text-emerald-400 mr-2"></i>E-mail:</span>
+                                <a href="mailto:joao.melomuniz01@gmail.com" class="text-emerald-400 hover:underline">joao.melomuniz01@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <!-- Direct Resume Download / Contact Call -->
+                        <div class="pt-2">
+                            <a href="https://wa.me/5571993794205?text=Ol%C3%A1%20Jo%C3%A3o%20Victor%2C%20sou%20recrutador%28a%29%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade%20de%20est%C3%A1gio!" 
+                               target="_blank" 
+                               class="w-full py-3 px-4 rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-semibold text-xs transition-all flex items-center justify-center space-x-2 border border-gray-700">
+                                <i class="fa-solid fa-user-tie text-emerald-400"></i>
+                                <span>Contatar para Vagas de Estágio</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Experience & Academic History Timeline -->
+                    <div class="lg:col-span-7 space-y-8">
+                        
+                        <!-- Timeline Box 1: Monitoria Academic -->
+                        <div class="bg-[#131B2E] border border-gray-800 rounded-2xl p-6 relative hover:border-emerald-500/50 transition-all">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-semibold">
+                                    Experiência Acadêmica
+                                </span>
+                                <span class="text-xs text-gray-400">Fevereiro de 2025 – Atual</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Monitor de Disciplinas</h3>
+                            <p class="text-xs text-emerald-400 font-medium">Arquitetura de Computadores e Raciocínio Lógico — UCSal</p>
+                            
+                            <ul class="mt-4 space-y-2 text-xs text-gray-300">
+                                <li class="flex items-start space-x-2">
+                                    <i class="fa-solid fa-angle-right text-emerald-400 mt-0.5"></i>
+                                    <span>Apoio direto aos professores titulares durante as aulas práticas e teóricas.</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <i class="fa-solid fa-angle-right text-emerald-400 mt-0.5"></i>
+                                    <span>Atendimento aos estudantes para solução de dúvidas de lógica, estruturas e fundamentos de computadores.</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <i class="fa-solid fa-angle-right text-emerald-400 mt-0.5"></i>
+                                    <span>Aprimoramento contínuo da didática, comunicação interpessoal, empatia e repasse de conteúdos técnicos complexos.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Timeline Box 2: Professional Support -->
+                        <div class="bg-[#131B2E] border border-gray-800 rounded-2xl p-6 relative hover:border-emerald-500/50 transition-all">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <span class="px-2.5 py-0.5 rounded-md bg-blue-500/10 text-blue-400 text-xs font-semibold">
+                                    Experiência Profissional
+                                </span>
+                                <span class="text-xs text-gray-400">Outubro de 2024 – Novembro de 2025</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">Auxiliar de Suporte e Operações</h3>
+                            <p class="text-xs text-blue-400 font-medium">Prospect</p>
+                            
+                            <ul class="mt-4 space-y-2 text-xs text-gray-300">
+                                <li class="flex items-start space-x-2">
+                                    <i class="fa-solid fa-angle-right text-emerald-400 mt-0.5"></i>
+                                    <span>Manutenção preventiva e corretiva de computadores, solucionando falhas de hardware e suporte à infraestrutura de TI.</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <i class="fa-solid fa-angle-right text-emerald-400 mt-0.5"></i>
+                                    <span>Prospecção, mapeamento de oportunidades e encaminhamento de candidatos.</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <i class="fa-solid fa-angle-right text-emerald-400 mt-0.5"></i>
+                                    <span>Suporte operacional, rotinas administrativas e atendimento direto ao público.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Skills Grid Pills -->
+                        <div class="bg-[#131B2E] border border-gray-800 rounded-2xl p-6">
+                            <h4 class="text-sm font-bold text-white mb-4">Competências & Habilidades Técnicas</h4>
+                            
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
+                                <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800">
+                                    <span class="text-emerald-400 font-semibold block mb-1">Front-End Web</span>
+                                    <span class="text-gray-300">HTML5, CSS3, JavaScript, Tailwind CSS</span>
+                                </div>
+                                <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800">
+                                    <span class="text-emerald-400 font-semibold block mb-1">Linguagens & Dados</span>
+                                    <span class="text-gray-300">SQL, Python (Básico), Lógica de Prog.</span>
+                                </div>
+                                <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800">
+                                    <span class="text-emerald-400 font-semibold block mb-1">Produtividade & IA</span>
+                                    <span class="text-gray-300">Engenharia de Prompts, Edição de Vídeo</span>
+                                </div>
+                                <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800">
+                                    <span class="text-emerald-400 font-semibold block mb-1">Hardware & TI</span>
+                                    <span class="text-gray-300">Manutenção de Pcs, Infraestrutura</span>
+                                </div>
+                                <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800">
+                                    <span class="text-emerald-400 font-semibold block mb-1">Processos</span>
+                                    <span class="text-gray-300">Metodologias Ágeis, Pacote Office</span>
+                                </div>
+                                <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800">
+                                    <span class="text-emerald-400 font-semibold block mb-1">Soft Skills</span>
+                                    <span class="text-gray-300">Comunicação, Didática, Organização</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Final Call to Action Section -->
+        <section class="py-16 bg-gradient-to-r from-emerald-900/40 via-[#131B2E] to-gray-900 border-t border-gray-800">
+            <div class="max-w-5xl mx-auto px-4 text-center space-y-6">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Pronto para tirar sua ideia do papel?</h2>
+                <p class="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto">
+                    Entre em contato hoje mesmo e vamos construir um site moderno, rápido e focado em trazer resultados para você ou sua empresa.
+                </p>
+                <div class="pt-2">
+                    <a href="https://wa.me/5571993794205?text=Ol%C3%A1%20Jo%C3%A3o%20Victor%2C%20quero%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20do%20meu%20site!" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center space-x-3 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-gray-950 font-extrabold text-base transition-all shadow-xl shadow-emerald-500/25">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <span>Falar com João Victor no WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#080B11] border-t border-gray-800 py-10 text-xs text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500 text-gray-950 font-bold flex items-center justify-center">
+                        JV
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-sm">João Victor Moraes de Melo Muniz</p>
+                        <p class="text-gray-400 text-[11px]">Desenvolvedor Web & Estudante de Eng. de Software</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-6">
+                    <a href="https://wa.me/5571993794205" target="_blank" class="hover:text-emerald-400 transition-colors">
+                        <i class="fa-brands fa-whatsapp mr-1 text-emerald-400"></i> (71) 99379-4205
+                    </a>
+                    <a href="mailto:joao.melomuniz01@gmail.com" class="hover:text-emerald-400 transition-colors">
+                        <i class="fa-solid fa-envelope mr-1 text-emerald-400"></i> joao.melomuniz01@gmail.com
+                    </a>
+                    <span class="text-gray-400">
+                        <i class="fa-solid fa-location-dot mr-1 text-red-400"></i> Lauro de Freitas, BA
+                    </span>
+                </div>
+
+                <div>
+                    <p>&copy; 2026 João Victor Muniz. Todos os direitos reservados.</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5571993794205?text=Ol%C3%A1%20Jo%C3%A3o%20Victor%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20falar%20com%20voc%C3%AA!" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       aria-label="Contato via WhatsApp"
+       class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-gray-950 rounded-full flex items-center justify-center text-3xl shadow-2xl shadow-emerald-500/50 hover:scale-110 transition-all duration-300">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+        });
+
+        // Handle Interactive WhatsApp Budget Estimator
+        function handleQuoteSubmit(event) {
+            event.preventDefault();
+
+            // 1. Get Project Type
+            const projectTypeElement = document.querySelector('input[name="projectType"]:checked');
+            const projectType = projectTypeElement ? projectTypeElement.value : 'Site / Landing Page';
+
+            // 2. Get Selected Features
+            const featureElements = document.querySelectorAll('input[name="features"]:checked');
+            const selectedFeatures = Array.from(featureElements).map(el => el.value);
+
+            // 3. Get User Details
+            const clientName = document.getElementById('clientName').value.trim();
+            const clientSegment = document.getElementById('clientSegment').value.trim();
+
+            // 4. Build Custom WhatsApp Message
+            let message = `*Olá João Victor! Gostaria de um orçamento para o meu negócio.*\n\n`;
+            message += `👤 *Nome / Empresa:* ${clientName}\n`;
+            if (clientSegment) {
+                message += `🏢 *Ramo:* ${clientSegment}\n`;
+            }
+            message += `🚀 *Tipo de Projeto:* ${projectType}\n`;
+
+            if (selectedFeatures.length > 0) {
+                message += `✨ *Recursos Desejados:* ${selectedFeatures.join(', ')}\n`;
+            }
+
+            message += `\nPodemos conversar sobre valores e prazos?`;
+
+            // Encode for URL
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappNumber = '5571993794205';
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+            // Redirect to WhatsApp
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+</body>
+</html>
